@@ -5,21 +5,24 @@
 // test.addEventListener("mouseover", function( event ) {   
 //     // highlight the mouseover target
 //     event.target.style.backgroundColor = "#e5e5e5";
-// }
-// )
-
+// })
 // //key-down
-
 // document.addEventListener("keydown",function(event){
 //     event.style.backgroundColor = "black";
 // });
+// const navTags = document.querySelectorAll('.nav-link');
+// const nav     = document.getElementsByClassName('nav');
+//processing
+//load 
+// const intro = document.querySelector('intro')
+// window.addEventListener('load',function(){
+//     intro.style.backgroundColor = "black"
+// }); //processing
 
 const header = document.querySelector('header');
 const h1     = document.querySelector('h1');
 const body   = document.querySelector('body')
-// const navTags = document.querySelectorAll('.nav-link');
 
-// const nav     = document.getElementsByClassName('nav');
 
 //mouseover
 header.addEventListener('mouseover', function(){
@@ -36,11 +39,7 @@ document.addEventListener('wheel', function(){
     header.style.backgroundColor = "#c6dabf"
 });
 
-//load 
-// const intro = document.querySelector('intro')
-// window.addEventListener('load',function(){
-//     intro.style.backgroundColor = "black"
-// }); 
+
 
 window.addEventListener('load', function(){
     header.style.backgroundColor = "grey";
@@ -97,3 +96,17 @@ for(let i=0 ; i<navTags.length; i++){
         header.style.backgroundColor='white';       
     })
 }
+
+//PREVENT propagation
+header.addEventListener('click',function(){
+    header.style.backgroundColor="#606c38";
+})
+navTags.forEach(navTag => navTag.addEventListener('click',function(e){
+    header.style.backgroundColor ="#fec89a";
+    e.stopPropagation();
+}))
+function eventPropagation (e){ 
+    header.style.backgroundColor="#fec89a";
+    e.stopPropagation();
+  }
+navTags.forEach(navTag => navTag.addEventListener('click',eventPropagation,false));
