@@ -18,6 +18,7 @@
 // window.addEventListener('load',function(){
 //     intro.style.backgroundColor = "black"
 // }); //processing
+import {gsap} from 'gsap'; 
 
 const header = document.querySelector('header');
 const h1     = document.querySelector('h1');
@@ -62,7 +63,7 @@ header.addEventListener('mouseleave',function(){
 const password = document.querySelector('input[type="password"]');
 
 password.addEventListener('focus', (event) => {
-  event.target.style.background = '';    
+  event.target.style.background = 'black';    
 });
 
 password.addEventListener('blur', (event) => {
@@ -89,7 +90,8 @@ password.addEventListener('blur', (event) => {
 }, false);
 
 
-//click
+//click preventDefault()
+
 const navTags = document.querySelectorAll('.nav-link');
 for(let i=0 ; i<navTags.length; i++){
     navTags[i].addEventListener('click',function(){      
@@ -110,3 +112,7 @@ function eventPropagation (e){
     e.stopPropagation();
   }
 navTags.forEach(navTag => navTag.addEventListener('click',eventPropagation,false));
+
+//Stretch
+gsap.from(".img-fluid", {rotation: 30, x: 120, duration: 1});
+gsap.from(".hero-img", {rotation: 20, x: 120, scale: 2, duration: 1});
